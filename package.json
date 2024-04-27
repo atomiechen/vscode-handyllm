@@ -1,0 +1,25 @@
+{
+  "name": "vscode-handyllm",
+  "displayName": "vscode-handyllm",
+  "description": "HandyLLM prompt language support.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "hprompt",
+      "aliases": ["handyprompt", "hprompt"],
+      "extensions": [".hprompt"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "hprompt",
+      "scopeName": "source.hprompt",
+      "path": "./syntaxes/hprompt.tmLanguage.json"
+    }]
+  }
+}
