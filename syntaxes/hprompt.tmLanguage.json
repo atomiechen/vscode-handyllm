@@ -43,7 +43,12 @@
 		"content": {
 			"name": "meta.body.content",
 			"begin": "(?<=^\\$\\w+\\$$)",
-			"end": "(?=^\\$\\w+\\$$)"
+			"end": "(?=^\\$\\w+\\$$)",
+			"patterns": [
+				{
+					"include": "text.html.markdown"
+				}
+			]
 		},
 		"comment": {
 			"match": ".",
