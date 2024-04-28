@@ -6,23 +6,17 @@
 			"include": "#frontmatter"
 		},
 		{
-			"include": "#body"
+			"include": "#role"
+		},
+		{
+			"include": "#content"
+		},
+		{
+			"include": "#comment"
 		}
 	],
 	"repository": {
 		"frontmatter": {
-			"begin": "\\A",
-			"end": "(?=^\\$\\w+\\$$)",
-			"patterns": [
-				{
-					"include": "#frontmatter-block"
-				},
-				{
-					"include": "#frontmatter-comment"
-				}
-			]
-		},
-		"frontmatter-block": {
 			"begin": "\\A---\\s*$",
 			"end": "^---\\s*$",
 			"beginCaptures": {
@@ -42,21 +36,6 @@
 				}
 			]
 		},
-		"frontmatter-comment": {
-			"begin": "(?<=\\A|(^---\\s*)$)",
-			"end": "(?=^\\$\\w+\\$$)",
-			"name": "comment.block"
-		},
-		"body": {
-			"patterns": [
-				{
-					"include": "#role"
-				},
-				{
-					"include": "#content"
-				}
-			]
-		},
 		"role": {
 			"name": "markup.heading",
 			"match": "^\\$\\w+\\$$"
@@ -65,6 +44,10 @@
 			"name": "meta.body.content",
 			"begin": "(?<=^\\$\\w+\\$$)",
 			"end": "(?=^\\$\\w+\\$$)"
+		},
+		"comment": {
+			"match": ".",
+			"name": "comment.block"
 		}
 	},
 	"scopeName": "source.hprompt"
