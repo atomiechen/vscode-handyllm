@@ -3,29 +3,69 @@
 	"name": "handyprompt",
 	"patterns": [
 		{
-			"include": "#keywords"
+			"include": "#frontmatter"
 		},
 		{
-			"include": "#strings"
+			"include": "#body"
 		}
 	],
 	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.hprompt",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.hprompt",
-			"begin": "\"",
-			"end": "\"",
+		"frontmatter": {
+			"begin": "\\A",
+			"end": "(?=^\\$\\w+\\$$)",
+			"contentName": "meta.frontmatter",
 			"patterns": [
 				{
-					"name": "constant.character.escape.hprompt",
-					"match": "\\\\."
+					"include": "#frontmatter-block"
+				},
+				{
+					"include": "#frontmatter-comment"
 				}
 			]
+		},
+		"frontmatter-block": {
+			"begin": "\\A---\\s*$",
+			"end": "^---\\s*$",
+			"beginCaptures": {
+				"0": {
+					"name": "entity.other.frontmatter.begin"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "entity.other.frontmatter.end"
+				}
+			},
+			"contentName": "meta.frontmatter.block",
+			"patterns": [
+				{
+					"include": "source.yaml"
+				}
+			]
+		},
+		"frontmatter-comment": {
+			"begin": "(?<=\\A|(^---\\s*)$)",
+			"end": "(?=^\\$\\w+\\$$)",
+			"name": "comment.block"
+		},
+		"body": {
+			"patterns": [
+				{
+					"include": "#role"
+				},
+				{
+					"include": "#content"
+				}
+			]
+		},
+		"role": {
+			"name": "markup.heading",
+			"match": "^\\$\\w+\\$$"
+		},
+		"content": {
+			"name": "meta.body.content",
+			"begin": "(?<=^\\$\\w+\\$$)",
+			"end": "(?=^\\$\\w+\\$$)"
 		}
 	},
 	"scopeName": "source.hprompt"
