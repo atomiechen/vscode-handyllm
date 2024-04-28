@@ -12,8 +12,8 @@
   "contributes": {
     "languages": [{
       "id": "hprompt",
-      "aliases": ["handyprompt", "hprompt"],
-      "extensions": [".hprompt"],
+      "aliases": ["Handy Prompt", "handyprompt", "hprompt"],
+      "extensions": [".hprompt", ".handyprompt", ".handy-prompt"],
       "configuration": "./language-configuration.json"
     }],
     "grammars": [{
