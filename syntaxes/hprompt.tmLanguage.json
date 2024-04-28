@@ -13,7 +13,6 @@
 		"frontmatter": {
 			"begin": "\\A",
 			"end": "(?=^\\$\\w+\\$$)",
-			"contentName": "meta.frontmatter",
 			"patterns": [
 				{
 					"include": "#frontmatter-block"

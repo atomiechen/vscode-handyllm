@@ -19,7 +19,10 @@
     "grammars": [{
       "language": "hprompt",
       "scopeName": "source.hprompt",
-      "path": "./syntaxes/hprompt.tmLanguage.json"
+      "path": "./syntaxes/hprompt.tmLanguage.json",
+      "embeddedLanguages": {
+        "meta.frontmatter.block": "yaml"
+      }
     }]
   }
 }
