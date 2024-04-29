@@ -1,5 +1,5 @@
 {
-  "name": "vscode-handyllm",
+  "name": "handyllm",
   "displayName": "HandyLLM",
   "description": "HandyLLM prompt language support",
   "author": {
@@ -14,7 +14,7 @@
   "private": true,
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.88.0"
+    "vscode": "^1.66.0"
   },
   "categories": [
     "Programming Languages"
