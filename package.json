@@ -1,7 +1,17 @@
 {
   "name": "vscode-handyllm",
-  "displayName": "vscode-handyllm",
-  "description": "HandyLLM prompt language support.",
+  "displayName": "HandyLLM",
+  "description": "HandyLLM prompt language support",
+  "author": {
+    "name": "Atomie CHEN",
+    "email": "atomic_cwh@163.com",
+    "url": "https://github.com/atomiechen"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atomiechen/vscode-handyllm"
+  },
+  "private": true,
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.88.0"
