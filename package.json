@@ -2,6 +2,7 @@
   "name": "handyllm",
   "displayName": "HandyLLM",
   "description": "HandyLLM prompt language support",
+  "publisher": "atomiechen",
   "author": {
     "name": "Atomie CHEN",
     "email": "atomic_cwh@163.com",
