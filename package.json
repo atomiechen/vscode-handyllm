@@ -20,6 +20,10 @@
   "categories": [
     "Programming Languages"
   ],
+  "scripts": {
+    "package": "vsce package",
+    "deploy": "vsce publish"
+  },
   "contributes": {
     "languages": [{
       "id": "hprompt",
