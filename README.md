@@ -8,5 +8,5 @@ HandyLLM prompt syntax highlighting.
 
 See demo below:
 
-![example](assets/demo/example.jpg)
+![example screenshot](https://raw.githubusercontent.com/atomiechen/vscode-handyllm/main/assets/demo/example.jpg)
 
