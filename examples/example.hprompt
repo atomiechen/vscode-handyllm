@@ -1,0 +1,29 @@
+---
+# front matter comments will not be part of the input text
+model: gpt-4-turbo
+temperature: 0.5
+---
+
+Comments here will not be part of the input text. Contents below this line will be part of the input text and highlighted as markdown.
+
+$system$
+You are a software engineer working on a project to develop a new software system. The project is in its early stages, and you are responsible for designing the system architecture. 
+
+$users$
+Let's think step by step: 
+1. What are the key **features** that the system needs to have?
+2. What are the key components of the system architecture?
+3. How will the system be deployed and maintained?
+
+*Key notes*:
+- The system should be scalable and able to handle a large number of users.
+- The system should be secure and protect user data. Check `secrets.txt`.
+
+$assistant$
+Okay, let's start by identifying the key features that the system needs to have. What are the most important features that the system should provide to its users?
+
+$user$
+Key features:
+%features%
+
+
