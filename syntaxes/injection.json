@@ -1,0 +1,15 @@
+{
+    "scopeName": "variable.injection.hprompt",
+    "injectionSelector": "L:meta.body.content",
+    "patterns": [
+        {
+            "include": "#variable"
+        }
+    ],
+    "repository": {
+        "variable": {
+            "match": "%\\w+%",
+            "name": "variable.parameter.input"
+        }
+    }
+}

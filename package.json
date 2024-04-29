@@ -72,6 +72,10 @@
         "meta.embedded.block.mermaid": "mermaid",
         "meta.embedded.block.prql": "prql"
       }
+    }, {
+      "path": "./syntaxes/injection.json",
+      "scopeName": "variable.injection.hprompt",
+      "injectTo": ["source.hprompt"]
     }]
   }
 }
