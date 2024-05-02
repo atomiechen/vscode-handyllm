@@ -39,6 +39,10 @@
           ".handyprompt",
           ".handy-prompt"
         ],
+        "icon": {
+          "light": "assets/logo/icon_round.svg",
+          "dark": "assets/logo/icon_round.svg"
+        },
         "configuration": "./language-configuration.json"
       }
     ],
