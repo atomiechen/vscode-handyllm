@@ -36,10 +36,17 @@
   "contributes": {
     "commands": [
       {
-        "command": "handyllm.helloWorld",
-        "title": "Hello World"
+        "command": "handyllm.runHprompt",
+        "title": "Run hprompt"
       }
     ],
+    "menus": {
+      "editor/title": [{
+          "when": "resourceLangId == hprompt",
+          "command": "handyllm.runHprompt",
+          "group": "navigation"
+      }]
+    },
     "languages": [
       {
         "id": "hprompt",
