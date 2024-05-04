@@ -23,11 +23,18 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposableRunHprompt = vscode.commands.registerCommand('handyllm.runHprompt', () => {
-		const activeEditor = vscode.window.activeTextEditor;
-		if (activeEditor) {
-			// get the file path of the currently active file
-			const filePath = activeEditor.document.uri.fsPath;
+	let disposableRunHprompt = vscode.commands.registerCommand('handyllm.runHprompt', (uri: vscode.Uri) => {
+		let filePath = undefined;
+		if (uri) {
+			filePath = uri.fsPath;
+		} else {
+			const activeEditor = vscode.window.activeTextEditor;
+			if (activeEditor) {
+				// get the file path of the currently active file
+				filePath = activeEditor.document.uri.fsPath;
+			}
+		}
+		if (filePath) {
 			const terminal = getOrCreateTerminal("hprompt");
 			terminal.show(true);
 			// run the hprompt command in the terminal

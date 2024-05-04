@@ -50,6 +50,11 @@
           "command": "handyllm.runHprompt",
           "group": "navigation"
       }],
+      "explorer/context": [{
+        "when": "resourceLangId == hprompt",
+        "command": "handyllm.runHprompt",
+        "group": "HandyLLM"
+      }],
       "file/newFile": [{
           "command": "handyllm.createHprompt",
           "group": "HandyLLM"
