@@ -3,13 +3,13 @@
 import * as vscode from 'vscode';
 
 function getOrCreateTerminal(name: string): vscode.Terminal {
-    // check if the terminal already exists
-    const existingTerminal = vscode.window.terminals.find(terminal => terminal.name === name);
-    if (existingTerminal) {
-        return existingTerminal;
-    } else {
-        return vscode.window.createTerminal(name);
-    }
+	// check if the terminal already exists
+	const existingTerminal = vscode.window.terminals.find(terminal => terminal.name === name);
+	if (existingTerminal) {
+		return existingTerminal;
+	} else {
+		return vscode.window.createTerminal(name);
+	}
 }
 
 // This method is called when your extension is activated
