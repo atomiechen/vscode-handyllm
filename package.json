@@ -37,7 +37,7 @@
     "commands": [
       {
         "command": "handyllm.runHprompt",
-        "title": "Run hprompt"
+        "title": "Run Hprompt"
       },
       {
         "command": "handyllm.createHprompt",
