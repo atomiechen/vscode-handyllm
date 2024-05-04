@@ -37,7 +37,11 @@
     "commands": [
       {
         "command": "handyllm.runHprompt",
-        "title": "Run Hprompt"
+        "title": "Run Hprompt",
+        "icon": {
+          "dark": "assets/icon/action_dark.svg",
+          "light": "assets/icon/action_light.svg"
+        }
       },
       {
         "command": "handyllm.createHprompt",
