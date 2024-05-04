@@ -38,7 +38,16 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	context.subscriptions.push(disposableRunHprompt);
+	let disposableCreateHprompt = vscode.commands.registerCommand('handyllm.createHprompt', function () {
+		vscode.workspace.openTextDocument({
+			content: '',
+			language: 'hprompt' // set the language mode to hprompt
+		}).then(document => {
+			vscode.window.showTextDocument(document);
+		});
+	});
+
+	context.subscriptions.push(disposableRunHprompt, disposableCreateHprompt);
 }
 
 // This method is called when your extension is deactivated

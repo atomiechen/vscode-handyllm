@@ -38,6 +38,10 @@
       {
         "command": "handyllm.runHprompt",
         "title": "Run hprompt"
+      },
+      {
+        "command": "handyllm.createHprompt",
+        "title": "Create new hprompt file"
       }
     ],
     "menus": {
@@ -45,6 +49,10 @@
           "when": "resourceLangId == hprompt",
           "command": "handyllm.runHprompt",
           "group": "navigation"
+      }],
+      "file/newFile": [{
+          "command": "handyllm.createHprompt",
+          "group": "HandyLLM"
       }]
     },
     "configurationDefaults": {
