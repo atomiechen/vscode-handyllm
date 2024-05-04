@@ -64,6 +64,14 @@
           "group": "HandyLLM"
       }]
     },
+    "keybindings":[
+      {
+        "command": "handyllm.runHprompt",
+        "key": "ctrl+alt+b",
+        "mac": "alt+cmd+b",
+        "when": "editorTextFocus && resourceLangId == hprompt"
+      }
+    ],
     "configurationDefaults": {
       "[hprompt]": {
         "editor.wordWrap": "on"
