@@ -47,6 +47,11 @@
           "group": "navigation"
       }]
     },
+    "configurationDefaults": {
+      "[hprompt]": {
+        "editor.wordWrap": "on"
+      }
+    },
     "languages": [
       {
         "id": "hprompt",
