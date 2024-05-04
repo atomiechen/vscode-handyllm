@@ -41,7 +41,7 @@
       },
       {
         "command": "handyllm.createHprompt",
-        "title": "Create new hprompt file"
+        "title": "Hprompt File"
       }
     ],
     "menus": {
