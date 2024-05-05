@@ -14,11 +14,16 @@ See demo below:
 
 ### Run hprompt file
 
+- Run the active hprompt file from the action button, or right click an `.hprompt` file, or issue from the command palette `Run Hprompt` (keyboard shortcut configured).
+- You can change `handyllm` command used in the terminal by setting `handyllm.commandName` (needs installation of [HandyLLM CLI](https://github.com/atomiechen/HandyLLM)). 
+
 See gif below:
 
 ![run hprompt](https://raw.githubusercontent.com/atomiechen/vscode-handyllm/main/assets/demo/run.gif)
 
 ### Create starter hprompt file
+
+Issue from command palette `New Hprompt File`, or `New File` and then select `Hprompt File`.
 
 See gif below:
 
