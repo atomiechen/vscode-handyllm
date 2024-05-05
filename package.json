@@ -41,11 +41,14 @@
         "icon": {
           "dark": "assets/icon/action_dark.svg",
           "light": "assets/icon/action_light.svg"
-        }
+        },
+        "category": "HandyLLM"
       },
       {
         "command": "handyllm.createHprompt",
-        "title": "Hprompt File"
+        "title": "New Hprompt File",
+        "shortTitle": "Hprompt File",
+        "category": "HandyLLM"
       }
     ],
     "menus": {
