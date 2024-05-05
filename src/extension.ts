@@ -35,10 +35,16 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		}
 		if (filePath) {
+			// get handyllm command name from the settings
+			let handyllmCommand = vscode.workspace.getConfiguration().get('handyllm.commandName', 'handyllm').trim();
+			if (handyllmCommand === '') {
+				handyllmCommand = 'handyllm';
+			}
+			// get or create a terminal with the name "hprompt"
 			const terminal = getOrCreateTerminal("hprompt");
 			terminal.show(true);
 			// run the hprompt command in the terminal
-			terminal.sendText(`handyllm hprompt ${filePath}`);
+			terminal.sendText(`${handyllmCommand} hprompt ${filePath}`);
 		} else {
 			// Display a message box to the user
 			vscode.window.showErrorMessage('No active editor found!');

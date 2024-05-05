@@ -72,6 +72,18 @@
         "when": "editorTextFocus && resourceLangId == hprompt"
       }
     ],
+    "configuration":[
+      {
+        "title": "HandyLLM command",
+        "properties": {
+          "handyllm.commandName": {
+            "type": "string",
+            "default": "handyllm",
+            "description": "The command name of HandyLLM"
+          }
+        }
+      }
+    ],
     "configurationDefaults": {
       "[hprompt]": {
         "editor.wordWrap": "on"
