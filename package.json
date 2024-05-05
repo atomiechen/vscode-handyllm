@@ -13,7 +13,7 @@
     "url": "https://github.com/atomiechen/vscode-handyllm"
   },
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.66.0"
   },
@@ -49,22 +49,28 @@
       }
     ],
     "menus": {
-      "editor/title": [{
+      "editor/title": [
+        {
           "when": "resourceLangId == hprompt",
           "command": "handyllm.runHprompt",
           "group": "navigation"
-      }],
-      "explorer/context": [{
-        "when": "resourceLangId == hprompt",
-        "command": "handyllm.runHprompt",
-        "group": "HandyLLM"
-      }],
-      "file/newFile": [{
+        }
+      ],
+      "explorer/context": [
+        {
+          "when": "resourceLangId == hprompt",
+          "command": "handyllm.runHprompt",
+          "group": "HandyLLM"
+        }
+      ],
+      "file/newFile": [
+        {
           "command": "handyllm.createHprompt",
           "group": "HandyLLM"
-      }]
+        }
+      ]
     },
-    "keybindings":[
+    "keybindings": [
       {
         "command": "handyllm.runHprompt",
         "key": "ctrl+alt+b",
@@ -72,7 +78,7 @@
         "when": "editorTextFocus && resourceLangId == hprompt"
       }
     ],
-    "configuration":[
+    "configuration": [
       {
         "title": "HandyLLM command",
         "properties": {
