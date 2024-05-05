@@ -1,0 +1,21 @@
+---
+model: gpt-3.5-turbo
+temperature: 0.5
+stream: true
+meta:
+  credential_path: .env
+  var_map_path: substitute.txt
+  output_path: out/%Y-%m-%d/result.%H-%M-%S.hprompt
+---
+
+$system$
+You are a helpful assistant.
+
+$user$
+My context:
+%context%
+
+Please help me write a poem about my day.
+
+Extra notes:
+%notes%
