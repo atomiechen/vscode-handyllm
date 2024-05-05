@@ -1,0 +1,5 @@
+%context%
+I met some new friends at the party. They were very friendly and we had a great time together. I was happy to have met them and I hope to see them again soon.
+
+%notes%
+Comply with the context and make sure to use the correct verb tense.
