@@ -9,6 +9,6 @@ vsc-extension-quickstart.md
 **/*.map
 **/*.ts
 **/.vscode-test.*
-assets/demo/**
+demo/**
 examples/**
 .github/**
