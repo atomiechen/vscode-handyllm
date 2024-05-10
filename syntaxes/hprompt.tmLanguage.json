@@ -38,12 +38,12 @@
 		},
 		"role": {
 			"name": "markup.heading",
-			"match": "^\\$\\w+\\$$"
+			"match": "^\\$\\w+\\$[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$"
 		},
 		"content": {
 			"name": "meta.body.content",
-			"begin": "(?<=^\\$\\w+\\$$)",
-			"end": "(?=^\\$\\w+\\$$)",
+			"begin": "(?<=^\\$\\w+\\$[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$)",
+			"end": "(?=^\\$\\w+\\$[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$)",
 			"patterns": [
 				{
 					"include": "text.html.markdown"
