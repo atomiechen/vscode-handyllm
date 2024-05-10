@@ -38,7 +38,12 @@
 		},
 		"role": {
 			"name": "markup.heading",
-			"match": "^\\$\\w+\\$[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$"
+			"match": "^\\$\\w+\\$[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$",
+			"captures": {
+				"1": {
+					"name": "entity.other"
+				}
+			}
 		},
 		"content": {
 			"name": "meta.body.content",
