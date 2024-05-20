@@ -10,7 +10,7 @@ VS Code extension for [HandyLLM](https://github.com/atomiechen/HandyLLM) (>= 0.7
 
 See demo below:
 
-![example screenshot](https://raw.githubusercontent.com/atomiechen/vscode-handyllm/main/demo/example.jpg)
+![example screenshot](https://raw.githubusercontent.com/atomiechen/vscode-handyllm/main/demo/example.png)
 
 ### Run hprompt file
 
