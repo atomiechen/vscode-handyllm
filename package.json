@@ -17,6 +17,7 @@
   "engines": {
     "vscode": "^1.66.0"
   },
+  "license": "MIT",
   "icon": "assets/icon/icon128.png",
   "categories": [
     "Programming Languages"
