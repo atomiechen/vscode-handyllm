@@ -12,7 +12,7 @@
 			"include": "#block_text"
 		},
 		{
-			"include": "#comment"
+			"include": "#plain_text"
 		}
 	],
 	"repository": {
@@ -119,9 +119,9 @@
 				}
 			}
 		},
-		"comment": {
+		"plain_text": {
 			"match": ".",
-			"name": "comment.block"
+			"name": "meta.plain-text"
 		}
 	},
 	"scopeName": "source.hprompt"
