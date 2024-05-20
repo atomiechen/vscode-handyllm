@@ -6,10 +6,10 @@
 			"include": "#frontmatter"
 		},
 		{
-			"include": "#role"
+			"include": "#block_yaml"
 		},
 		{
-			"include": "#content"
+			"include": "#block_text"
 		},
 		{
 			"include": "#comment"
@@ -36,24 +36,88 @@
 				}
 			]
 		},
-		"role": {
-			"name": "markup.heading",
-			"match": "^\\$\\w+\\$[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$",
-			"captures": {
+		"block_yaml": {
+			"begin": "^(\\$\\w+\\$)[^\\S\\r\\n]*({[^{}]*?type\\s*=[^{}]*})[^\\S\\r\\n]*$",
+			"end": "(?=^(\\$\\w+\\$)[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$)",
+			"beginCaptures": {
+				"0": {
+					"name": "meta.block.yaml.start"
+				},
 				"1": {
-					"name": "entity.other"
+					"name": "keyword.role"
+				},
+				"2": {
+					"name": "meta.block.yaml.properties",
+					"patterns": [
+						{
+							"include": "#extra_properties"
+						}
+					]
 				}
-			}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "meta.block.yaml.end"
+				}
+			},
+			"contentName": "meta.block.yaml",
+			"patterns": [
+				{
+					"include": "source.yaml"
+				}
+			]
 		},
-		"content": {
-			"name": "meta.body.content",
-			"begin": "(?<=^\\$\\w+\\$[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$)",
-			"end": "(?=^\\$\\w+\\$[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$)",
+		"block_text": {
+			"begin": "^(\\$\\w+\\$)[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$",
+			"end": "(?=^(\\$\\w+\\$)[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$)",
+			"beginCaptures": {
+				"0": {
+					"name": "meta.block.text.start"
+				},
+				"1": {
+					"name": "keyword.role"
+				},
+				"2": {
+					"name": "meta.block.text.properties",
+					"patterns": [
+						{
+							"include": "#extra_properties"
+						}
+					]
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "meta.block.text.end"
+				}
+			},
+			"contentName": "meta.block.text",
 			"patterns": [
 				{
 					"include": "text.html.markdown"
 				}
 			]
+		},
+		"extra_properties": {
+			"match": "(\\w+)\\s*=\\s*(\"[^\"]*\"|\\'[^\\']*\\')",
+			"captures": {
+				"1": {
+					"name": "entity.other.attribute-name"
+				},
+				"2": {
+					"name": "string.quoted",
+					"patterns": [
+						{
+							"match": "(?<=\")[^\"]*(?=\")",
+							"name": "string.quoted.double"
+						},
+						{
+							"match": "(?<=')[^']*(?=')",
+							"name": "string.quoted.single"
+						}
+					]
+				}
+			}
 		},
 		"comment": {
 			"match": ".",
