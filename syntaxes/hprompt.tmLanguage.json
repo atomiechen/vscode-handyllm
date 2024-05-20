@@ -6,13 +6,13 @@
 			"include": "#frontmatter"
 		},
 		{
-			"include": "#role"
+			"include": "#block_yaml"
 		},
 		{
-			"include": "#content"
+			"include": "#block_text"
 		},
 		{
-			"include": "#comment"
+			"include": "#plain_text"
 		}
 	],
 	"repository": {
@@ -36,23 +36,92 @@
 				}
 			]
 		},
-		"role": {
-			"name": "markup.heading",
-			"match": "^\\$\\w+\\$$"
+		"block_yaml": {
+			"begin": "^(\\$\\w+\\$)[^\\S\\r\\n]*({[^{}]*?type\\s*=[^{}]*})[^\\S\\r\\n]*$",
+			"end": "(?=^(\\$\\w+\\$)[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$)",
+			"beginCaptures": {
+				"0": {
+					"name": "meta.block.start"
+				},
+				"1": {
+					"name": "keyword.role"
+				},
+				"2": {
+					"name": "meta.block.properties",
+					"patterns": [
+						{
+							"include": "#extra_properties"
+						}
+					]
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "meta.block.end"
+				}
+			},
+			"contentName": "meta.block.yaml",
+			"patterns": [
+				{
+					"include": "source.yaml"
+				}
+			]
 		},
-		"content": {
-			"name": "meta.body.content",
-			"begin": "(?<=^\\$\\w+\\$$)",
-			"end": "(?=^\\$\\w+\\$$)",
+		"block_text": {
+			"begin": "^(\\$\\w+\\$)[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$",
+			"end": "(?=^(\\$\\w+\\$)[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$)",
+			"beginCaptures": {
+				"0": {
+					"name": "meta.block.start"
+				},
+				"1": {
+					"name": "keyword.role"
+				},
+				"2": {
+					"name": "meta.block.properties",
+					"patterns": [
+						{
+							"include": "#extra_properties"
+						}
+					]
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "meta.block.end"
+				}
+			},
+			"contentName": "meta.block.text",
 			"patterns": [
 				{
 					"include": "text.html.markdown"
 				}
 			]
 		},
-		"comment": {
+		"extra_properties": {
+			"match": "(\\w+)\\s*=\\s*(\"[^\"]*\"|\\'[^\\']*\\')",
+			"captures": {
+				"1": {
+					"name": "entity.other.attribute-name"
+				},
+				"2": {
+					"name": "string.quoted",
+					"patterns": [
+						{
+							"match": "(?<=\")[^\"]*(?=\")",
+							"name": "string.quoted.double"
+						},
+						{
+							"match": "(?<=')[^']*(?=')",
+							"name": "string.quoted.single"
+						}
+					]
+				}
+			}
+		},
+		"plain_text": {
 			"match": ".",
-			"name": "comment.block"
+			"name": "meta.plain-text"
 		}
 	},
 	"scopeName": "source.hprompt"

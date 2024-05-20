@@ -1,29 +1,31 @@
 ---
 # front matter comments will not be part of the input text
-model: gpt-4-turbo
+model: gpt-4o
 temperature: 0.5
+tools:
+- type: function
+  function:
+    name: fetch_project_context
 ---
 
-Comments here will not be part of the input text. Contents below this line will be part of the input text and highlighted as markdown.
-
 $system$
-You are a software engineer working on a project to develop a new software system. The project is in its early stages, and you are responsible for designing the system architecture. 
+You are a software engineer working on a project to develop a new software system. 
 
-$users$
+$users$ {name='Atomie'}
 Let's think step by step: 
 1. What are the key **features** that the system needs to have?
-2. What are the key components of the system architecture?
-3. How will the system be deployed and maintained?
+2. How will the system be deployed and maintained?
 
 *Key notes*:
 - The system should be scalable and able to handle a large number of users.
 - The system should be secure and protect user data. Check `secrets.txt`.
 
-$assistant$
-Okay, let's start by identifying the key features that the system needs to have. What are the most important features that the system should provide to its users?
+$assistant$ {type="tool_calls"}
+- function:
+    arguments: '{}'
+    name: fetch_project_context
+  id: call_uFJMXPlfy4q59pViuSLH5HnZ
+  type: function
 
-$user$
-Key features:
-%features%
-
-
+$tool$ {tool_call_id="call_uFJMXPlfy4q59pViuSLH5HnZ"}
+The project is in its early stages. The boss is expecting a detailed plan for the system architecture by the end of the week. We know no more than that.

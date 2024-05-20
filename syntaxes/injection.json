@@ -1,6 +1,6 @@
 {
     "scopeName": "variable.injection.hprompt",
-    "injectionSelector": "L:meta.body.content",
+    "injectionSelector": "L:meta.block.text, L:meta.block.yaml",
     "patterns": [
         {
             "include": "#variable"
