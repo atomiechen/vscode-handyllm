@@ -41,13 +41,13 @@
 			"end": "(?=^(\\$\\w+\\$)[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$)",
 			"beginCaptures": {
 				"0": {
-					"name": "meta.block.yaml.start"
+					"name": "meta.block.start"
 				},
 				"1": {
 					"name": "keyword.role"
 				},
 				"2": {
-					"name": "meta.block.yaml.properties",
+					"name": "meta.block.properties",
 					"patterns": [
 						{
 							"include": "#extra_properties"
@@ -57,7 +57,7 @@
 			},
 			"endCaptures": {
 				"0": {
-					"name": "meta.block.yaml.end"
+					"name": "meta.block.end"
 				}
 			},
 			"contentName": "meta.block.yaml",
@@ -72,13 +72,13 @@
 			"end": "(?=^(\\$\\w+\\$)[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$)",
 			"beginCaptures": {
 				"0": {
-					"name": "meta.block.text.start"
+					"name": "meta.block.start"
 				},
 				"1": {
 					"name": "keyword.role"
 				},
 				"2": {
-					"name": "meta.block.text.properties",
+					"name": "meta.block.properties",
 					"patterns": [
 						{
 							"include": "#extra_properties"
@@ -88,7 +88,7 @@
 			},
 			"endCaptures": {
 				"0": {
-					"name": "meta.block.text.end"
+					"name": "meta.block.end"
 				}
 			},
 			"contentName": "meta.block.text",
