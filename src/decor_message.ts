@@ -34,7 +34,7 @@ class MessageConfig {
     const boundaryWidth = config.get("message.boundary.width", 1);
     this._boundaryDecoration = vscode.window.createTextEditorDecorationType({
       isWholeLine: true,
-      borderWidth: `${boundaryWidth}px 0 0 0`, // 设置为上边框
+      borderWidth: `0 0 ${boundaryWidth}px 0`,  // set to bottom border
       borderStyle: config.get("message.boundary.style", "dotted"),
       light: {
         borderColor: config.get("message.boundary.light", "#acacac"),
