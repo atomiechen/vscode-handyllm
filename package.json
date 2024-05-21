@@ -90,6 +90,21 @@
             "type": "string",
             "default": "handyllm",
             "description": "The command name of HandyLLM"
+          },
+          "handyllm.frontmatter.background.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Enable frontmatter background"
+          },
+          "handyllm.frontmatter.background.light": {
+            "type": "string",
+            "default": "#acacac36",
+            "description": "The background color of frontmatter in light theme"
+          },
+          "handyllm.frontmatter.background.dark": {
+            "type": "string",
+            "default": "#54545436",
+            "description": "The background color of frontmatter in dark theme"
           }
         }
       }
