@@ -105,6 +105,41 @@
             "type": "string",
             "default": "#54545436",
             "description": "The background color of frontmatter in dark theme"
+          },
+          "handyllm.message.boundary.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Enable message boundary"
+          },
+          "handyllm.message.boundary.width": {
+            "type": "number",
+            "default": 1,
+            "description": "The width of message boundary"
+          },
+          "handyllm.message.boundary.style": {
+            "type": "string",
+            "enum": [
+              "dotted",
+              "dashed",
+              "solid",
+              "double",
+              "groove",
+              "ridge",
+              "inset",
+              "outset"
+            ],
+            "default": "dotted",
+            "description": "The style of message boundary"
+          },
+          "handyllm.message.boundary.light": {
+            "type": "string",
+            "default": "#acacac",
+            "description": "The color of message boundary in light theme"
+          },
+          "handyllm.message.boundary.dark": {
+            "type": "string",
+            "default": "#545454",
+            "description": "The color of message boundary in dark theme"
           }
         }
       }

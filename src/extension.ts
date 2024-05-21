@@ -4,6 +4,7 @@ import * as vscode from 'vscode';
 import { registerCommandCreate } from './cmd_create';
 import { registerCommandRun } from './cmd_run';
 import { activateFrontmatterDecor } from './decor_frontmatter';
+import { activateMessageDecor } from './decor_message';
 
 
 // This method is called when your extension is activated
@@ -17,6 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
 	registerCommandCreate(context);
 	registerCommandRun(context);
 	activateFrontmatterDecor(context);
+	activateMessageDecor(context);
 }
 
 // This method is called when your extension is deactivated
