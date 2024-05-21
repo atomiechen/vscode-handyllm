@@ -44,7 +44,7 @@
 					"name": "meta.block.start"
 				},
 				"1": {
-					"name": "keyword.role"
+					"name": "markup.heading"
 				},
 				"2": {
 					"name": "meta.block.properties",
@@ -75,7 +75,7 @@
 					"name": "meta.block.start"
 				},
 				"1": {
-					"name": "keyword.role"
+					"name": "markup.heading"
 				},
 				"2": {
 					"name": "meta.block.properties",
