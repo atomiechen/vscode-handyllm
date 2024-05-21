@@ -89,32 +89,32 @@
           "handyllm.commandName": {
             "type": "string",
             "default": "handyllm",
-            "description": "The command name of HandyLLM"
+            "description": "The command name of HandyLLM",
+            "order": 0
           },
           "handyllm.frontmatter.background.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "Enable frontmatter background"
+            "description": "Enable frontmatter background",
+            "order": 100
           },
           "handyllm.frontmatter.background.light": {
             "type": "string",
             "default": "#acacac36",
-            "description": "The background color of frontmatter in light theme"
+            "description": "The background color of frontmatter in light theme",
+            "order": 101
           },
           "handyllm.frontmatter.background.dark": {
             "type": "string",
             "default": "#54545436",
-            "description": "The background color of frontmatter in dark theme"
+            "description": "The background color of frontmatter in dark theme",
+            "order": 102
           },
           "handyllm.message.boundary.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "Enable message boundary"
-          },
-          "handyllm.message.boundary.width": {
-            "type": "number",
-            "default": 1,
-            "description": "The width of message boundary"
+            "description": "Enable message boundary",
+            "order": 200
           },
           "handyllm.message.boundary.style": {
             "type": "string",
@@ -129,17 +129,26 @@
               "outset"
             ],
             "default": "dotted",
-            "description": "The style of message boundary"
+            "description": "The style of message boundary",
+            "order": 201
+          },
+          "handyllm.message.boundary.width": {
+            "type": "number",
+            "default": 1,
+            "description": "The width of message boundary",
+            "order": 202
           },
           "handyllm.message.boundary.light": {
             "type": "string",
             "default": "#acacac",
-            "description": "The color of message boundary in light theme"
+            "description": "The color of message boundary in light theme",
+            "order": 203
           },
           "handyllm.message.boundary.dark": {
             "type": "string",
             "default": "#545454",
-            "description": "The color of message boundary in dark theme"
+            "description": "The color of message boundary in dark theme",
+            "order": 204
           }
         }
       }
