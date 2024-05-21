@@ -185,6 +185,7 @@
         "path": "./syntaxes/hprompt.tmLanguage.json",
         "embeddedLanguages": {
           "meta.frontmatter.block": "yaml",
+          "meta.block.yaml": "yaml",
           "source.js": "javascript",
           "source.css": "css",
           "meta.embedded.block.html": "html",
