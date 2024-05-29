@@ -6,6 +6,7 @@ import { registerCommandRun } from './cmd_run';
 import { activateFrontmatterDecor } from './decor_frontmatter';
 import { activateMessageDecor } from './decor_message';
 import { registerFoldingMessage } from './fold_message';
+import { registerFoldingFrontmatter } from './fold_frontmatter';
 
 
 // This method is called when your extension is activated
@@ -19,6 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
 	registerCommandCreate(context);
 	registerCommandRun(context);
 	registerFoldingMessage(context);
+	registerFoldingFrontmatter(context);
 	activateFrontmatterDecor(context);
 	activateMessageDecor(context);
 }
