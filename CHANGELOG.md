@@ -5,6 +5,13 @@ All notable changes to the "vscode-handyllm" extension will be documented in thi
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+## [unreleased] - YYYY-MM-DD
+
+### Added
+
+- Foldable messages
+
+
 ## [0.1.3] - 2024-05-22
 
 ### Added
