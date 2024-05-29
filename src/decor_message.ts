@@ -1,7 +1,7 @@
 import debounce from 'lodash.debounce';
 import * as vscode from 'vscode';
 
-import { isHpromptDoc } from './utils';
+import { isHpromptDoc, matchRole } from './utils';
 
 
 class MessageConfig {
@@ -75,10 +75,9 @@ function updateEditor(editor: vscode.TextEditor) {
   const frontmatterRanges: vscode.Range[] = [];
 
   if (messageConfig.enabled) {
-    // find lines that matches \$\w+\$[^\S\r\n]*({[^{}]*?})?[^\S\r\n]*$
     for (let i = 0; i < editor.document.lineCount; i++) {
       const text = editor.document.lineAt(i).text;
-      const match = text.match(/^\$\w+\$[^\S\r\n]*({[^{}]*?})?[^\S\r\n]*$/);
+      const match = matchRole(text);
       if (match) {
         const start = new vscode.Position(i, 0);
         const end = new vscode.Position(i, text.length);

@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { matchRole } from './utils';
 
 
 export function registerFoldingMessage(context: vscode.ExtensionContext) {
@@ -8,7 +9,7 @@ export function registerFoldingMessage(context: vscode.ExtensionContext) {
             let start = -1;
             for (let i = 0; i < document.lineCount; i++) {
                 const text = document.lineAt(i).text;
-                const match = text.match(/^\$\w+\$[^\S\r\n]*({[^{}]*?})?[^\S\r\n]*$/);
+                const match = matchRole(text);
                 if (match) {
                     if (start !== -1) {
                         folds.push(new vscode.FoldingRange(start, i - 1));
