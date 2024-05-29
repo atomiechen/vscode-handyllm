@@ -5,7 +5,7 @@ All notable changes to the "vscode-handyllm" extension will be documented in thi
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
-## [unreleased] - YYYY-MM-DD
+## [0.1.4] - 2024-05-29
 
 ### Added
 
