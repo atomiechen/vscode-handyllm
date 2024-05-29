@@ -9,7 +9,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### Added
 
-- Foldable messages
+- Foldable frontmatter and messages
 
 
 ## [0.1.3] - 2024-05-22
