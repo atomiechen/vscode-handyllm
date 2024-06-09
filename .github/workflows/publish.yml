@@ -11,6 +11,15 @@ on:
         type: boolean
         default: false
         description: Publish to GitHub release
+      use_changelog:
+        type: boolean
+        default: true
+        description: Extract release notes from CHANGELOG.md
+      changelog_file:
+        type: string
+        default: CHANGELOG.md
+        description: Path to changelog file
+        required: false
       release_tag:
         type: string
         description: Tag to release (empty for latest tag)
@@ -18,83 +27,12 @@ on:
 
 jobs:
   test-and-publish:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check if all checkboxes are unchecked
-        id: check_checkboxes
-        run: |
-          if [[ ${{ inputs.publish_marketplace }} == false && ${{ inputs.publish_github }} == false ]]; then
-            echo "All checkboxes are unchecked. Exiting workflow."
-            exit 1
-          fi
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Verify and set release tag
-        id: set_release_tag
-        run: |
-          git fetch --prune --unshallow --tags
-          release_tag=${{ inputs.release_tag }}
-          if [ -z "$release_tag" ]; then
-            echo "Input tag is empty. Fetching latest tag."
-            release_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
-            if [ -z "$release_tag" ]; then
-              echo "No latest tag available. Exiting workflow."
-              exit 1
-            fi
-          else
-            if ! git rev-parse -q --verify "refs/tags/$release_tag" >/dev/null; then
-              echo "Invalid tag '$release_tag'. Exiting workflow."
-              exit 1
-            fi
-          fi
-          echo "::set-output name=tag::$release_tag"
-      - name: Checkout to latest tag
-        run: git checkout ${{ steps.set_release_tag.outputs.tag }}
-      - name: Debug info
-        run: |
-          echo "Ref: ${{ github.ref }}"
-          echo "Release tag: ${{ steps.set_release_tag.outputs.tag }}"
-          echo "Publish marketplace input: ${{ inputs.publish_marketplace }}"
-          echo "Publish GitHub input: ${{ inputs.publish_github }}"
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.x
-      - run: npm install
-      - run: xvfb-run -a npm test
-      - name: Get repository name
-        if: inputs.publish_github
-        id: get_repo_name
-        run: |
-          repo_full_name=${{ github.repository }}
-          repo_name=${repo_full_name#*/}
-          echo "::set-output name=name::$repo_name"
-      - name: Build package
-        if: inputs.publish_github
-        run: npm run package
-      - name: Extract release notes
-        if: inputs.publish_github
-        id: extract-release-notes
-        uses: ffurrer2/extract-release-notes@v2
-        with:
-          changelog_file: CHANGELOG.md
-      - name: Publish to GitHub release
-        if: inputs.publish_github
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            *.vsix
-          tag_name: ${{ steps.set_release_tag.outputs.tag }}
-          name: ${{ steps.get_repo_name.outputs.name }} ${{ steps.set_release_tag.outputs.tag }}
-          body: |
-            Release ${{ steps.get_repo_name.outputs.name }} ${{ steps.set_release_tag.outputs.tag }}.
-            
-            ${{ steps.extract-release-notes.outputs.release_notes }}
-          draft: false
-          prerelease: false
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Publish to marketplace
-        if: ${{ !cancelled() && inputs.publish_marketplace }}
-        run: npm run deploy
-        env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+    uses: atomiechen/reusable-workflows/.github/workflows/publish-vse.yml@main
+    with:
+      publish_marketplace: ${{ inputs.publish_marketplace }}
+      publish_github: ${{ inputs.publish_github }}
+      use_changelog: ${{ inputs.use_changelog }}
+      changelog_file: ${{ inputs.changelog_file }}
+      release_tag: ${{ inputs.release_tag }}
+    secrets:
+      VSCE_PAT: ${{ secrets.VSCE_PAT }}
