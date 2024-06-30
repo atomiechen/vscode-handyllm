@@ -149,6 +149,18 @@
             "default": "#545454",
             "description": "The color of message boundary in dark theme",
             "order": 204
+          },
+          "handyllm.hiddenline.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Enable hide long lines",
+            "order": 300
+          },
+          "handyllm.hiddenline.limit": {
+            "type": "number",
+            "default": 80,
+            "description": "The limit of line length",
+            "order": 301
           }
         }
       }
