@@ -5,6 +5,7 @@ import { registerCommandCreate } from './cmd_create';
 import { registerCommandRun } from './cmd_run';
 import { activateFrontmatterDecor } from './decor_frontmatter';
 import { activateMessageDecor } from './decor_message';
+import { activateHiddenLineDecor } from './decor_hidden_line';
 import { registerFoldingMessage } from './fold_message';
 import { registerFoldingFrontmatter } from './fold_frontmatter';
 
@@ -21,6 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
 	registerCommandRun(context);
 	registerFoldingMessage(context);
 	registerFoldingFrontmatter(context);
+	activateHiddenLineDecor(context);
 	activateFrontmatterDecor(context);
 	activateMessageDecor(context);
 }
