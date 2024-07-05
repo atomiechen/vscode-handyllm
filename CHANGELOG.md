@@ -5,6 +5,17 @@ All notable changes to the "vscode-handyllm" extension will be documented in thi
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+## [0.2.0] - 2024-07-05
+
+### Changed
+
+- Hide frontmatter end boundary when it is folded
+
+### Fixed
+
+- Wrap hprompt file name in quotes for run command.
+
+
 ## [0.1.4] - 2024-05-29
 
 ### Added
