@@ -36,7 +36,7 @@ export function registerCommandRun(context: vscode.ExtensionContext) {
 			const terminal = getOrCreateTerminal("hprompt");
 			terminal.show(true);
 			// run the hprompt command in the terminal
-			terminal.sendText(`${handyllmCommand} hprompt ${filePath}`);
+			terminal.sendText(`${handyllmCommand} hprompt "${filePath}"`);
 		} else {
 			// Display a message box to the user
 			vscode.window.showErrorMessage('No active editor found!');
