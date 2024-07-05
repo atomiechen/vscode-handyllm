@@ -13,7 +13,7 @@ export function registerFoldingFrontmatter(context: vscode.ExtensionContext) {
                 for (let i = 1; i < document.lineCount; i++) {
                     const text = document.lineAt(i).text;
                     if (isFrontmatterBoundary(text)) {
-                        folds.push(new vscode.FoldingRange(0, i - 1));
+                        folds.push(new vscode.FoldingRange(0, i));
                         end = i;
                         break;
                     }
