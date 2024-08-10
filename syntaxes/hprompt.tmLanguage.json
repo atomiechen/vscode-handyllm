@@ -37,7 +37,7 @@
 			]
 		},
 		"block_yaml": {
-			"begin": "^(\\$\\w+\\$)[^\\S\\r\\n]*({[^{}]*?type\\s*=[^{}]*})[^\\S\\r\\n]*$",
+			"begin": "^(\\$\\w+\\$)[^\\S\\r\\n]*({[^{}]*?(?:type\\s*=|(?<=\\s|{)(?:tool|array)(?=\\s|}))[^{}]*})[^\\S\\r\\n]*$",
 			"end": "(?=^(\\$\\w+\\$)[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$)",
 			"beginCaptures": {
 				"0": {
@@ -99,25 +99,33 @@
 			]
 		},
 		"extra_properties": {
-			"match": "(\\w+)\\s*=\\s*(\"[^\"]*\"|\\'[^\\']*\\')",
-			"captures": {
-				"1": {
-					"name": "entity.other.attribute-name"
-				},
-				"2": {
-					"name": "string.quoted",
-					"patterns": [
-						{
-							"match": "(?<=\")[^\"]*(?=\")",
-							"name": "string.quoted.double"
+			"patterns": [
+				{
+					"match": "(\\w+)\\s*=\\s*(\"[^\"]*\"|\\'[^\\']*\\')",
+					"captures": {
+						"1": {
+							"name": "entity.other.attribute-name"
 						},
-						{
-							"match": "(?<=')[^']*(?=')",
-							"name": "string.quoted.single"
+						"2": {
+							"name": "string.quoted",
+							"patterns": [
+								{
+									"match": "(?<=\")[^\"]*(?=\")",
+									"name": "string.quoted.double"
+								},
+								{
+									"match": "(?<=')[^']*(?=')",
+									"name": "string.quoted.single"
+								}
+							]
 						}
-					]
+					}
+				},
+				{
+					"match": "(?<=\\s|{)(tool|array)(?=\\s|})",
+					"name": "keyword.other"
 				}
-			}
+			]
 		},
 		"plain_text": {
 			"match": ".",

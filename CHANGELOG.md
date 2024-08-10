@@ -5,6 +5,14 @@ All notable changes to the "vscode-handyllm" extension will be documented in thi
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+## [0.2.1] - 2024-08-10
+
+### Added
+
+- highlight extra property keywords (`tool` and `array`) for convenience
+- add `, * and _ to surrounding pairs
+
+
 ## [0.2.0] - 2024-07-05
 
 ### Changed
