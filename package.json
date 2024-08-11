@@ -163,13 +163,11 @@
         "id": "hprompt",
         "aliases": [
           "Handy Prompt",
-          "handyprompt",
           "hprompt"
         ],
         "extensions": [
           ".hprompt",
-          ".handyprompt",
-          ".handy-prompt"
+          ".hpr"
         ],
         "icon": {
           "light": "assets/icon/icon_round.svg",
