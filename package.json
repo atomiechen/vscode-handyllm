@@ -25,8 +25,8 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "scripts": {
-    "package": "vsce package",
-    "deploy": "vsce publish",
+    "package": "vsce package -m 'Bump version to %s'",
+    "deploy": "vsce publish -m 'Bump version to %s'",
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
