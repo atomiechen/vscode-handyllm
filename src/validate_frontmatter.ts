@@ -119,6 +119,37 @@ export function registerValidateFrontmatter(context: vscode.ExtensionContext) {
         // Set to diagnostic collection
         diagnosticCollection.set(originalUri, adjustedDiagnostics);
         }
+    }),
+
+    vscode.languages.registerHoverProvider(['hprompt'], {
+      async provideHover(document: vscode.TextDocument, position: vscode.Position) {
+          if (!isHpromptDoc(document)) {
+              return;
+          }
+
+          // Check if position is within frontmatter region
+          const text = document.getText();
+          const frontmatter = extractFrontmatter(text);
+          if (!frontmatter || position.line < 1 || position.line > frontmatter.split('\n').length) {
+              return;
+          }
+
+          // Get corresponding virtual document
+          const virtualDocUri = buildVirtualDocUri(document.uri);
+
+          // Adjust position: subtract frontmatter start offset (1 is the number of lines for "---\n")
+          const virtualPosition = new vscode.Position(
+              position.line - 1,
+              position.character
+          );
+
+          // Get hover from YAML extension
+          return await vscode.commands.executeCommand<vscode.Hover[]>(
+              'vscode.executeHoverProvider',
+              virtualDocUri,
+              virtualPosition
+          ).then(hovers => hovers?.[0]);
+      }
     })
   );
 }
