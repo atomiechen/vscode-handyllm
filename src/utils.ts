@@ -20,3 +20,9 @@ export function isFrontmatterBoundary(text: string) {
   // check if text matches ---\s*
   return /^---\s*$/.test(text);
 }
+
+export function extractFrontmatter(text: string) {
+  // extract frontmatter wrapped in ---
+  const match = /^---\s*\n([\s\S]*?)\n---/.exec(text);
+  return match ? match[1].trim() : null;
+}
