@@ -155,7 +155,12 @@
     ],
     "configurationDefaults": {
       "[hprompt]": {
-        "editor.wordWrap": "on"
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": {
+          "other": "on",
+          "comments": "off",
+          "strings": "on"
+        }
       }
     },
     "languages": [
