@@ -22,7 +22,7 @@ export function isFrontmatterBoundary(text: string) {
 }
 
 export function extractFrontmatter(text: string) {
-  // extract frontmatter wrapped in ---
-  const match = /^---\s*\n([\s\S]*?)\n---/.exec(text);
-  return match ? match[1].trim() : null;
+  // extract frontmatter wrapped in ---, including empty leading/trailing lines
+  const match = /^---[^\S\r\n]*\n([\s\S]*?)\n---/.exec(text);
+  return match ? match[1] : null;
 }
