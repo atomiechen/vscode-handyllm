@@ -161,6 +161,35 @@ export function registerValidateFrontmatter(context: vscode.ExtensionContext) {
               virtualInfo.virtualPosition
           ).then(hovers => hovers?.[0]);
       }
+    }),
+
+    // Add completion provider
+    vscode.languages.registerCompletionItemProvider(['hprompt'], 
+      {
+      async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, _context: vscode.CompletionContext) {
+        // console.log('provideCompletionItems', document.uri.toString(), position.line, position.character, _context.triggerCharacter);
+        const virtualInfo = getVirtualPosition(document, position);
+        if (!virtualInfo) {
+          // console.log('provideCompletionItems', 'no virtualInfo');
+          return;
+        }
+
+        // Get completion items from YAML extension
+        const ret = await vscode.commands.executeCommand<vscode.CompletionList>(
+          'vscode.executeCompletionItemProvider',
+          virtualInfo.virtualDocUri,
+          virtualInfo.virtualPosition,
+          _context.triggerCharacter,
+        );
+        // console.log('provideCompletionItems', ret);
+        // remove range from completion items to avoid invalid error (don't know why)
+        ret.items.forEach(item => {
+          if (item.range) {
+            item.range = undefined;
+          }
+        });
+        return ret;
+      }
     })
   );
 }
