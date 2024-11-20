@@ -111,6 +111,9 @@ export function registerValidateFrontmatter(context: vscode.ExtensionContext) {
         const virtualDocUri = buildVirtualDocUri(doc.uri);
         virtualDocumentContents.delete(virtualDocUri.toString());
 
+        // Fire event to update virtual document content
+        virtualContentProvider.onDidChangeEmitter.fire(virtualDocUri);
+
         // Clean up diagnostics
         diagnosticCollection.delete(doc.uri);
     }),
