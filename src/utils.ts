@@ -26,3 +26,7 @@ export function extractFrontmatter(text: string) {
   const match = /^---[^\S\r\n]*\n([\s\S]*?)\n---/.exec(text);
   return match ? match[1] : null;
 }
+
+export function lineCount(text: string) {
+  return text.split('\n').length;
+}
