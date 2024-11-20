@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { extractFrontmatter, isHpromptDoc } from './utils';
+import { extractFrontmatter, isHpromptDoc, lineCount } from './utils';
 
 
 // Virtual document scheme
@@ -78,7 +78,7 @@ function getVirtualPosition(document: vscode.TextDocument, position: vscode.Posi
   // Check if position is within frontmatter region
   const text = document.getText();
   const frontmatter = extractFrontmatter(text);
-  if (!frontmatter || position.line < 1 || position.line > frontmatter.split('\n').length) {
+  if (!frontmatter || position.line < 1 || position.line > lineCount(frontmatter)) {
     return null;
   }
 
@@ -132,7 +132,7 @@ export function registerValidateFrontmatter(context: vscode.ExtensionContext) {
 
     // Listen for diagnostic changes
     vscode.languages.onDidChangeDiagnostics(e => {
-    for (const uri of e.uris) {
+      for (const uri of e.uris) {
         // Check if this is our virtual document
         if (uri.scheme !== virtualDocScheme) {
             continue;
@@ -159,7 +159,7 @@ export function registerValidateFrontmatter(context: vscode.ExtensionContext) {
 
         // Set to diagnostic collection
         diagnosticCollection.set(originalUri, adjustedDiagnostics);
-        }
+      }
     }),
 
     vscode.languages.registerHoverProvider(['hprompt'], {
@@ -182,10 +182,8 @@ export function registerValidateFrontmatter(context: vscode.ExtensionContext) {
     vscode.languages.registerCompletionItemProvider(['hprompt'], 
       {
       async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, _context: vscode.CompletionContext) {
-        // console.log('provideCompletionItems', document.uri.toString(), position.line, position.character, _context.triggerCharacter);
         const virtualInfo = getVirtualPosition(document, position);
         if (!virtualInfo) {
-          // console.log('provideCompletionItems', 'no virtualInfo');
           return;
         }
 
@@ -196,7 +194,6 @@ export function registerValidateFrontmatter(context: vscode.ExtensionContext) {
           virtualInfo.virtualPosition,
           _context.triggerCharacter,
         );
-        // console.log('provideCompletionItems', ret);
         // remove range from completion items to avoid invalid error (don't know why)
         ret.items.forEach(item => {
           if (item.range) {

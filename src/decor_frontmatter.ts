@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import debounce from 'lodash.debounce';
 
-import { isFrontmatterBoundary, isHpromptDoc } from './utils';
+import { extractFrontmatter, isHpromptDoc, lineCount } from './utils';
 
 
 class FrontmatterConfig {
@@ -72,19 +72,11 @@ function updateEditor(editor: vscode.TextEditor) {
 
   if (frontmatterConfig.enabled) {
     // find frontmatter wrapped in ---
-    const firstLine = editor.document.lineAt(0);
-    // check if first line matches boundary
-    if (isFrontmatterBoundary(firstLine.text)) {
-      // find the next boundary line
-      for (let i=1; i<editor.document.lineCount; i++) {
-        const line = editor.document.lineAt(i);
-        if (isFrontmatterBoundary(line.text)) {
-          const start = new vscode.Position(0, 0);
-          const end = new vscode.Position(i, line.range.end.character);
-          frontmatterRanges.push(new vscode.Range(start, end));
-          break;
-        }
-      }
+    const frontmatter = extractFrontmatter(editor.document.getText());
+    if (frontmatter) {
+      const start = new vscode.Position(0, 0);
+      const end = new vscode.Position(lineCount(frontmatter) + 1, 0);
+      frontmatterRanges.push(new vscode.Range(start, end));
     }
     
     // set the decorations
