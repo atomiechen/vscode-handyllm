@@ -29,6 +29,19 @@ function getOriginalDocUri(uri: vscode.Uri) {
   return vscode.Uri.parse(decodeURIComponent(uri.path.slice(1, -5)));
 }
 
+function closeRelatedVirtualDoc(doc: vscode.TextDocument) {
+  if (!isHpromptDoc(doc)) {
+    return;
+  }
+  const virtualDocUri = buildVirtualDocUri(doc.uri);
+  // Clean up virtual document content
+  virtualDocumentContents.delete(virtualDocUri.toString());
+  // Fire event to update virtual document content
+  virtualContentProvider.onDidChangeEmitter.fire(virtualDocUri);
+  // Clean up diagnostics
+  diagnosticCollection.delete(doc.uri);
+}
+
 async function checkVirtualDoc(doc: vscode.TextDocument) {
   if (!isHpromptDoc(doc)) {
     return;
@@ -37,6 +50,7 @@ async function checkVirtualDoc(doc: vscode.TextDocument) {
   const text = doc.getText();
   const frontmatter = extractFrontmatter(text);
   if (!frontmatter) {
+      closeRelatedVirtualDoc(doc);
       return;
   }
 
@@ -103,19 +117,7 @@ export function registerValidateFrontmatter(context: vscode.ExtensionContext) {
 
     // Listen for document close events
     vscode.workspace.onDidCloseTextDocument(doc => {
-        if (!isHpromptDoc(doc)) {
-            return;
-        }
-
-        // Clean up virtual document content
-        const virtualDocUri = buildVirtualDocUri(doc.uri);
-        virtualDocumentContents.delete(virtualDocUri.toString());
-
-        // Fire event to update virtual document content
-        virtualContentProvider.onDidChangeEmitter.fire(virtualDocUri);
-
-        // Clean up diagnostics
-        diagnosticCollection.delete(doc.uri);
+      closeRelatedVirtualDoc(doc);
     }),
 
     // Listen for diagnostic changes
