@@ -42,7 +42,7 @@ function closeRelatedVirtualDoc(doc: vscode.TextDocument) {
   diagnosticCollection.delete(doc.uri);
 }
 
-async function checkVirtualDoc(doc: vscode.TextDocument) {
+async function checkVirtualDoc(doc: vscode.TextDocument, force = false) {
   if (!isHpromptDoc(doc)) {
     return;
   }
@@ -58,8 +58,8 @@ async function checkVirtualDoc(doc: vscode.TextDocument) {
   const virtualDocUri = buildVirtualDocUri(doc.uri);
 
   // check if the virtual document content is changed
-  if (virtualDocumentContents.get(virtualDocUri.toString()) === frontmatter) {
-      return;
+  if (!force && virtualDocumentContents.get(virtualDocUri.toString()) === frontmatter) {
+    return;
   }
 
   // Update virtual document content
@@ -118,6 +118,16 @@ export function registerValidateFrontmatter(context: vscode.ExtensionContext) {
     // Listen for document close events
     vscode.workspace.onDidCloseTextDocument(doc => {
       closeRelatedVirtualDoc(doc);
+
+      // Note: virtual documents may be closed when no changes are made (after ~3 min?)
+      // Revive the virtual document if the source document is still open
+      if (doc.uri.scheme === virtualDocScheme) {
+        const originalUri = getOriginalDocUri(doc.uri);
+        const originalDoc = vscode.workspace.textDocuments.find(d => d.uri.toString() === originalUri.toString());
+        if (originalDoc) {
+          checkVirtualDoc(originalDoc, true);
+        }
+      }
     }),
 
     // Listen for diagnostic changes
