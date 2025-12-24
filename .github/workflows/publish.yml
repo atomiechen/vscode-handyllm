@@ -27,6 +27,8 @@ on:
 
 jobs:
   test-and-publish:
+    permissions:
+      contents: write  # required for GitHub Releases
     uses: atomiechen/reusable-workflows/.github/workflows/publish-vse.yml@main
     with:
       publish_marketplace: ${{ inputs.publish_marketplace }}
