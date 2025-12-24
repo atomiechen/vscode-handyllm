@@ -6,7 +6,11 @@ on:
       publish_marketplace:
         type: boolean
         default: false
-        description: Publish to marketplace
+        description: Publish to VS Marketplace
+      publish_openvsx:
+        type: boolean
+        default: false
+        description: Publish to Open VSX Registry
       publish_github:
         type: boolean
         default: false
@@ -32,9 +36,11 @@ jobs:
     uses: atomiechen/reusable-workflows/.github/workflows/publish-vse.yml@main
     with:
       publish_marketplace: ${{ inputs.publish_marketplace }}
+      publish_openvsx: ${{ inputs.publish_openvsx }}
       publish_github: ${{ inputs.publish_github }}
       use_changelog: ${{ inputs.use_changelog }}
       changelog_file: ${{ inputs.changelog_file }}
       release_tag: ${{ inputs.release_tag }}
     secrets:
       VSCE_PAT: ${{ secrets.VSCE_PAT }}
+      OVSX_PAT: ${{ secrets.OVSX_PAT }}
