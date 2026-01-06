@@ -179,6 +179,9 @@
           "dark": "assets/icon/icon_round.svg"
         },
         "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "hprompt-markdown-injection"
       }
     ],
     "grammars": [
@@ -246,6 +249,17 @@
         "injectTo": [
           "source.hprompt"
         ]
+      },
+      {
+        "language": "hprompt-markdown-injection",
+        "scopeName": "markdown.hprompt.codeblock",
+        "path": "./syntaxes/hprompt-markdown-injection.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.hprompt": "hprompt"
+        }
       }
     ]
   },
