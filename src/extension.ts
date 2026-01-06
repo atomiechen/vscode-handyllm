@@ -8,6 +8,7 @@ import { activateMessageDecor } from './decor_message';
 import { registerFoldingMessage } from './fold_message';
 import { registerFoldingFrontmatter } from './fold_frontmatter';
 import { registerValidateFrontmatter } from './validate_frontmatter';
+import { registerDocumentSymbolProvider } from './symbol_provider';
 
 
 // This method is called when your extension is activated
@@ -25,6 +26,7 @@ export function activate(context: vscode.ExtensionContext) {
 	activateFrontmatterDecor(context);
 	activateMessageDecor(context);
 	registerValidateFrontmatter(context);
+	registerDocumentSymbolProvider(context);
 }
 
 // This method is called when your extension is deactivated
