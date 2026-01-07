@@ -1,0 +1,65 @@
+{
+	"Add frontmatter": {
+		"prefix": ["frontmatter", "fm"],
+		"body": [
+			"---",
+			"meta:",
+			"  credential_path: ${1:CREDENTIAL.yml}",
+			"  var_map_path: ${2:VAR_MAP.txt}",
+			"model: ${3:MODEL_NAME}",
+			"temperature: ${4:0.3}",
+			"---",
+			"$0"
+		],
+		"description": "Frontmatter"
+	},
+	"Add assistant response with tool": {
+		"prefix": ["$assistant$"],
+		"body": [
+			"\\$assistant\\$ {tool}",
+			"- type: function",
+			"  function:",
+			"    name: ${1:FUNCTION_NAME}",
+			"    argument: '${2:{\\}}'",
+			"  id: ${3:CALL_ID}",
+			"$0"
+		],
+		"description": "Assistant response with tool"
+	},
+	"Add tool call response": {
+		"prefix": ["$tool$"],
+		"body": [
+			"\\$tool\\$ {tool_call_id=\"${1:CALL_ID}\"}",
+			"${2:RESULT_CONTENT}",
+			"$0"
+		],
+		"description": "Tool call response"
+	},
+	"Add user message with audio": {
+		"prefix": ["$user$"],
+		"body": [
+			"\\$user\\$ {array}",
+			"- type: text",
+			"  text: ${1:What's in this audio?}  # Your prompt",
+			"- type: input_audio",
+			"  input_audio:",
+			"    data: ${2:file://audio.mp3}  # Local file path or base64 string",
+			"    format: ${3:mp3}  # file format",
+			"$0"
+		],
+		"description": "User message with audio"
+	},
+	"Add user message with image": {
+		"prefix": ["$user$"],
+		"body": [
+			"\\$user\\$ {array}",
+			"- type: text",
+			"  text: ${1:What's in this image?}  # Your prompt",
+			"- type: image_url",
+			"  image_url:",
+			"    url: ${2:file://my_image.jpg}  # Local, remote file path or base64 string",
+			"$0"
+		],
+		"description": "User message with image"
+	}
+}

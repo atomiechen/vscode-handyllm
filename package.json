@@ -20,7 +20,8 @@
   "license": "MIT",
   "icon": "assets/icon/icon128.png",
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Snippets"
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
@@ -40,6 +41,12 @@
     "test": "vscode-test"
   },
   "contributes": {
+    "snippets": [
+      {
+        "language": "hprompt",
+        "path": "./snippets.json"
+      }
+    ],
     "markdown.markdownItPlugins": true,
     "commands": [
       {
