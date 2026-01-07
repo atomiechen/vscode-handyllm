@@ -12,3 +12,9 @@ vsc-extension-quickstart.md
 demo/**
 examples/**
 .github/**
+
+
+# === Newly added after esbuild bundling ===
+node_modules
+out/
+scripts/
