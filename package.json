@@ -35,6 +35,7 @@
     "test": "vscode-test"
   },
   "contributes": {
+    "markdown.markdownItPlugins": true,
     "commands": [
       {
         "command": "handyllm.runHprompt",
@@ -265,6 +266,7 @@
   },
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.9",
+    "@types/markdown-it": "^14.1.2",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
     "@types/vscode": "^1.66.0",
@@ -277,6 +279,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "lodash.debounce": "^4.0.8"
+    "lodash.debounce": "^4.0.8",
+    "shiki": "^3.20.0"
   }
 }

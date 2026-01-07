@@ -9,6 +9,7 @@ import { registerFoldingMessage } from './fold_message';
 import { registerFoldingFrontmatter } from './fold_frontmatter';
 import { registerValidateFrontmatter } from './validate_frontmatter';
 import { registerDocumentSymbolProvider } from './symbol_provider';
+import { getExtendMarkdownIt } from './markdown-it-plugin';
 
 
 // This method is called when your extension is activated
@@ -27,6 +28,10 @@ export function activate(context: vscode.ExtensionContext) {
 	activateMessageDecor(context);
 	registerValidateFrontmatter(context);
 	registerDocumentSymbolProvider(context);
+
+	return {
+		extendMarkdownIt: getExtendMarkdownIt(context),
+	};
 }
 
 // This method is called when your extension is deactivated
