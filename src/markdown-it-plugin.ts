@@ -27,7 +27,7 @@ export function getExtendMarkdownIt(context: vscode.ExtensionContext) {
 
       initializing = (async () => {
         console.log('[handyllm] Initializing Shiki highlighter for hprompt...');
-        const shiki = await import('shiki');
+        const shiki = await import('./shiki.bundle.mjs');
 
         // Load grammar from the extension's static resource path
         const uri = vscode.Uri.joinPath(
