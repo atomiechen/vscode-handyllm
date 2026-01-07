@@ -18,7 +18,7 @@
 	"repository": {
 		"frontmatter": {
 			"begin": "\\A---\\s*$",
-			"end": "^---\\s*$",
+			"end": "^---\\s*$|(?=^(\\$\\w+\\$)[^\\S\\r\\n]*({[^{}]*?})?[^\\S\\r\\n]*$)",
 			"beginCaptures": {
 				"0": {
 					"name": "entity.other.frontmatter.begin"
