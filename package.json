@@ -34,7 +34,7 @@
     "vscode:prepublish": "npm run package",
     "package": "npm run check-types && node scripts/esbuild.js --production",
     "lint": "eslint src --ext ts",
-    "gen-shiki": "shiki-codegen --langs yaml,markdown --themes vitesse-dark,vitesse-light --engine javascript src/shiki.bundle.mts",
+    "gen-shiki": "shiki-codegen --langs yaml,markdown --themes github-dark,github-light --engine javascript src/shiki.bundle.mts",
     "compile-tests": "tsc -p . --outDir out",
     "pretest": "npm run compile-tests",
     "test": "vscode-test"

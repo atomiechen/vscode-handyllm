@@ -11,7 +11,7 @@ import {
 import { createJavaScriptRegexEngine } from '@shikijs/engine-javascript'
 
 type BundledLanguage = 'yaml' | 'yml' | 'markdown' | 'md'
-type BundledTheme = 'vitesse-dark' | 'vitesse-light'
+type BundledTheme = 'github-dark' | 'github-light'
 type Highlighter = HighlighterGeneric<BundledLanguage, BundledTheme>
 
 const bundledLanguages = {
@@ -22,8 +22,8 @@ const bundledLanguages = {
 } as Record<BundledLanguage, DynamicImportLanguageRegistration>
 
 const bundledThemes = {
-  'vitesse-dark': () => import('@shikijs/themes/vitesse-dark'),
-  'vitesse-light': () => import('@shikijs/themes/vitesse-light'),
+  'github-dark': () => import('@shikijs/themes/github-dark'),
+  'github-light': () => import('@shikijs/themes/github-light'),
 } as Record<BundledTheme, DynamicImportThemeRegistration>
 
 const createHighlighter = /* @__PURE__ */ createBundledHighlighter<

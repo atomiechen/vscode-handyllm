@@ -2,15 +2,18 @@ import type MarkdownIt from 'markdown-it';
 import * as vscode from 'vscode';
 
 
+const allThemes = ['github-dark', 'github-light'];
+
+
 function mapVscodeThemeToShikiTheme(vscodeKind: vscode.ColorThemeKind): string {
   switch (vscodeKind) {
     case vscode.ColorThemeKind.Dark:
     case vscode.ColorThemeKind.HighContrast:
-      return 'vitesse-dark';
+      return 'github-dark';
     case vscode.ColorThemeKind.Light:
     case vscode.ColorThemeKind.HighContrastLight:
     default:
-      return 'vitesse-light';
+      return 'github-light';
   }
 }
 
@@ -39,7 +42,7 @@ export function getExtendMarkdownIt(context: vscode.ExtensionContext) {
         const grammar = JSON.parse(new TextDecoder().decode(bytes));
 
         highlighter = await shiki.createHighlighter({
-          themes: ['vitesse-dark', 'vitesse-light'],
+          themes: allThemes,
           langs: [
             'markdown',
             'yaml',
@@ -62,10 +65,18 @@ export function getExtendMarkdownIt(context: vscode.ExtensionContext) {
       if (lang === 'hprompt' || lang === 'hpr') {
         if (highlighter) {
           try {
-            const shikiTheme = mapVscodeThemeToShikiTheme(vscode.window.activeColorTheme.kind);
+            const activeShikiTheme = mapVscodeThemeToShikiTheme(vscode.window.activeColorTheme.kind);
             return highlighter.codeToHtml(code, {
               lang: 'hprompt',
-              theme: shikiTheme,
+              theme: activeShikiTheme,
+              transformers: [
+                {
+                  pre(node: any) {
+                    // Remove background style to match default markdown preview
+                    delete node.properties.style;
+                  },
+                },
+              ],
             });
           } catch {}
         } else {
