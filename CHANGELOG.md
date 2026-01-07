@@ -5,6 +5,25 @@ All notable changes to the "vscode-handyllm" extension will be documented in thi
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+## [0.3.0] - 2026-01-07
+
+### Added
+
+- Frontmatter YAML validation support (when the schema is configured), with hover info, auto-completion
+- Add highlight for hprompt in markdown code block (fenced), *both* in editor and preview
+- Provide document symbols for outline and sticky scroll
+- Add hprompt snippets:
+  - frontmatter
+  - user message with audio / image
+  - assistant response with tool call
+  - tool call response
+
+### Changed
+
+- Do not fold frontmatter if no ending fence
+- Frontmatter highlight will stop matching when reaching any role line
+
+
 ## [0.2.1] - 2024-08-10
 
 ### Added
